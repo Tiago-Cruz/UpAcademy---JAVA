@@ -1,6 +1,9 @@
 package io.altar.jseproject.textinterface;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import io.altar.jseproject.model.Product;
 
 public class TextInterface {
 	
@@ -11,8 +14,36 @@ public class TextInterface {
 		System.out.println("1) Listar Produtos");
 		System.out.println("2) Listar Prateleiras");
 		System.out.println("3) Sair");
-
+		
+		int userInput = checkUserInput(1, 3);
+		
+		int activeScreen;
+		switch (userInput){
+			
+			case 1:
+				
+				secondScreen();
+				userInput = checkUserInput(1, 5);
+				
+				activeScreen = 2;
+				getUserOption(activeScreen, userInput);
+				break;
+					
+			case 2:
+				
+				thirdScreen();
+				userInput = checkUserInput(1, 5);
+				
+				activeScreen = 3;
+				getUserOption(activeScreen, userInput);
+				break;
+					
+			case 3:
+				
+				System.out.println("BYE!");
+				return;
 		}
+	}
 	
 	public static void secondScreen() {
 		
@@ -41,32 +72,119 @@ public class TextInterface {
 	public static int checkUserInput(int min, int max) {
 		
 		Scanner s = new Scanner(System.in);
-		int userOption = 0;
+		int input = 0;
 		
 		while(true) {
 			
-			if (!s.hasNextInt()) {
+			if (s.hasNextInt()) {
 				
-				userOption = s.nextInt();
-				if (userOption >= min && userOption <= max) {
-					return userOption;
+				input = s.nextInt();
+				
+				if (input >= min && input <= max) {
+					
+					return input;
 				} else {
 					System.out.println("Por favor introduza um numero entre " + min + " e " + max);
+					
 				}
 				} else {
+					
 					System.out.println("Por favor introduza um número");
 					s.next();
 				}
-			}
-			
-			userOption = s.nextInt(); // Recolher o input válido
-			//s.close();
-			System.out.println(userOption);
-			
-			
 		}
 	}
+	
+	public static void getUserOption(int activeScreen, int option) {
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		if (activeScreen == 2) {
+			
+			switch (option) {
+			
+				case 1:
+									
+					System.out.println("Menu criar novo produto:");
+					
+					System.out.println("Insira o nome do novo produto:");
+					String productName = scanner.nextLine();
+					
+					System.out.println("Insira o desconto do novo produto:");
+					float discount = scanner.nextInt();
+					
+					System.out.println("Insira o IVA em percentagem do novo produto:");
+					int iva = scanner.nextInt();
+					
+					System.out.println("Insira o PVP do novo produto:");
+					float pvp = scanner.nextInt();
+					
+					int productId = 0;
+					productId += 1; 
+					
+					Product newProduct = new Product(productId, productName, discount, iva, pvp);
+					break;
+					
+				case 2:
+					
+					System.out.println("Screen 2-2");
+					break;
+					
+				case 3:
+					
+					System.out.println("Screen 2-3");
+					break;
+					
+				case 4:
+					
+					System.out.println("Screen 2-4");
+					break;
+					
+				case 5:
+					firstScreen();
+					break;
+			}
+			
+		} else if (activeScreen == 3) {
+			
+			switch (option) {
+			
+				case 1:
+									
+					System.out.println("Screen 3-1");
+					break;
+					
+				case 2:
+					
+					System.out.println("Screen 3-2");
+					break;
+					
+				case 3:
+					
+					System.out.println("Screen 3-3");
+					break;
+					
+				case 4:
+					
+					System.out.println("Screen 3-4");
+					break;
+					
+				case 5:
+					
+					firstScreen();
+					break;
+			}
+		}
+	}
+	
+	public static void saveValues(int productID, String productName, ) {
+		
+		ArrayList productList = new ArrayList();
+		System.out.println("Initial size of al: " + productList.size());
+	}
 }
+
+
 
 // Boolean endCheckUserInput = false;
 /* package org.altar.session1.test;

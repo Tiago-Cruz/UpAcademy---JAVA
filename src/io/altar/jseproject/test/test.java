@@ -1,5 +1,7 @@
 package io.altar.jseproject.test;
 
+import java.util.Scanner;
+
 import io.altar.jseproject.textinterface.TextInterface;
 
 
@@ -10,10 +12,5 @@ public class test {
 		TextInterface teste = new TextInterface();
 		teste.firstScreen();
 		
-		int input = 
-		
-		teste.checkUserInput();
-		
 	}
-	
 }
