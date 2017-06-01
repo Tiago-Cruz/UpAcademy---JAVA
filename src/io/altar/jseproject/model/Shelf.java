@@ -6,7 +6,7 @@ public class Shelf {
 	private int locationCode;
 	private int capacity;
 	//public String productName;
-	private float price;
+	private double price;
 	
 	public int getShelfId() {
 		return shelfId;
@@ -26,10 +26,10 @@ public class Shelf {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 }

@@ -5,9 +5,9 @@ public class Product {
 		private int productId;
 		//public int shelfList[];
 		private String productName;
-		private float discount;
+		private double discount;
 		private int iva;
-		private float pvp;
+		private double pvp;
 		
 		public int getProductId() {
 			return productId;
@@ -21,10 +21,10 @@ public class Product {
 		public void setProductName(String productName) {
 			this.productName = productName;
 		}
-		public float getDiscount() {
+		public double getDiscount() {
 			return discount;
 		}
-		public void setDiscount(float discount) {
+		public void setDiscount(double discount) {
 			this.discount = discount;
 		}
 		public int getIva() {
@@ -33,14 +33,14 @@ public class Product {
 		public void setIva(int iva) {
 			this.iva = iva;
 		}
-		public float getPvp() {
+		public double getPvp() {
 			return pvp;
 		}
-		public void setPvp(float pvp) {
+		public void setPvp(double pvp) {
 			this.pvp = pvp;
 		}
 		
-		public Product (int productId, String productName, float discount, int iva, float pvp) {
+		public Product (int productId, String productName, double discount, int iva, double pvp) {
 			
 		    //Se for escolhido o construtor sem a COR do veículo
 		    // definimos a cor padrão como sendo PRETA
@@ -51,5 +51,10 @@ public class Product {
 			this.iva = iva;
 			this.pvp = pvp;
 			
+		}
+		
+		@Override
+		public String toString(){
+			return "Id" + productId + "| PVP " + pvp;
 		}
 }

@@ -7,6 +7,9 @@ import io.altar.jseproject.model.Product;
 
 public class TextInterface {
 	
+	static Scanner scanner = new Scanner(System.in);
+	static ArrayList<Product> productLists = new ArrayList<Product>();
+	
 	public static void firstScreen() {
 		
 		System.out.println("Menu Screen 1");
@@ -71,14 +74,13 @@ public class TextInterface {
 	
 	public static int checkUserInput(int min, int max) {
 		
-		Scanner s = new Scanner(System.in);
 		int input = 0;
 		
 		while(true) {
 			
-			if (s.hasNextInt()) {
+			if (scanner.hasNextInt()) {
 				
-				input = s.nextInt();
+				input = scanner.nextInt();
 				
 				if (input >= min && input <= max) {
 					
@@ -90,39 +92,48 @@ public class TextInterface {
 				} else {
 					
 					System.out.println("Por favor introduza um número");
-					s.next();
+					scanner.next();
 				}
 		}
 	}
 	
 	public static void getUserOption(int activeScreen, int option) {
 		
-		Scanner scanner = new Scanner(System.in);
-		
 		if (activeScreen == 2) {
 			
 			switch (option) {
 			
 				case 1:
-									
-					System.out.println("Menu criar novo produto:");
-					
-					System.out.println("Insira o nome do novo produto:");
-					String productName = scanner.nextLine();
-					
-					System.out.println("Insira o desconto do novo produto:");
-					float discount = scanner.nextInt();
-					
-					System.out.println("Insira o IVA em percentagem do novo produto:");
-					int iva = scanner.nextInt();
-					
-					System.out.println("Insira o PVP do novo produto:");
-					float pvp = scanner.nextInt();
 					
 					int productId = 0;
-					productId += 1; 
+					String validation;
 					
-					Product newProduct = new Product(productId, productName, discount, iva, pvp);
+					do {
+						
+						System.out.println("Menu criar novo produto:");
+						
+						System.out.println("Insira o nome do novo produto:");
+						String productName = scanner.nextLine();
+						
+						System.out.println("Insira o desconto do novo produto:");
+						double discount = scanner.nextDouble();
+						
+						System.out.println("Insira o IVA em percentagem do novo produto:");
+						int iva = scanner.nextInt();
+						
+						System.out.println("Insira o PVP do novo produto:");
+						double pvp = scanner.nextDouble();
+						
+						productId += 1; 
+						
+						Product newProduct = new Product(productId, productName, discount, iva, pvp);
+						saveValues(productId, productName, discount, iva, pvp);
+						
+						System.out.println("Quer continuar a inserir novo produto? (S/N)");
+						validation = scanner.next();
+						
+					} while(validation.equalsIgnoreCase("s") );
+					
 					break;
 					
 				case 2:
@@ -150,8 +161,36 @@ public class TextInterface {
 			switch (option) {
 			
 				case 1:
-									
-					System.out.println("Screen 3-1");
+					
+					int productId = 0;
+					String validation;
+					
+					do {
+						
+						System.out.println("Menu criar nova prateleira:");
+						
+						System.out.println("Insira o nome da nova prateleira:");
+						String productName = scanner.nextLine();
+						
+						System.out.println("Insira o desconto do novo produto:");
+						double discount = scanner.nextDouble();
+						
+						System.out.println("Insira o IVA em percentagem do novo produto:");
+						int iva = scanner.nextInt();
+						
+						System.out.println("Insira o PVP do novo produto:");
+						double pvp = scanner.nextDouble();
+						
+						productId += 1; 
+						
+						Product newProduct = new Product(productId, productName, discount, iva, pvp);
+						saveValues(productId, productName, discount, iva, pvp);
+						
+						System.out.println("Quer continuar a inserir novo produto? (S/N)");
+						validation = scanner.next();
+						
+					} while(validation.equalsIgnoreCase("s") );
+					
 					break;
 					
 				case 2:
@@ -177,10 +216,25 @@ public class TextInterface {
 		}
 	}
 	
-	public static void saveValues(int productID, String productName, ) {
+	public static void saveValues(int productId, String productName, double discount, int iva, double pvp) {
 		
-		ArrayList productList = new ArrayList();
-		System.out.println("Initial size of al: " + productList.size());
+		System.out.println("Initial size of al: " + productLists.size());
+		
+		//for (int j = 0; j < productId; j++) {
+			Product p = new Product(productId, productName, discount, iva, pvp);
+			productLists.add(p);
+		//}
+		
+		for ( int j = 0; j < productId; j++) {
+			
+			System.out.println("Nome: " + p.getProductName());
+			System.out.println(Product);
+		}
+			
+		System.out.println("Size of al after additions: " + productLists.size());
+		
+		System.out.println("Contents of Product List: " + productLists);
+		
 	}
 }
 
@@ -280,3 +334,10 @@ public class test {
 			
 			
 		}*/
+
+/*@Override
+public String toString(){
+	return "Id" + id + "| PVP " + pvp;
+}
+
+sysout(Product)*/
