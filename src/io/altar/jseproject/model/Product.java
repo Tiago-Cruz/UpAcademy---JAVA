@@ -55,6 +55,6 @@ public class Product {
 		
 		@Override
 		public String toString(){
-			return "Id" + productId + "| PVP " + pvp;
+			return "Id:" + productId + "| Nome: " + productName + "| Desconto: " + discount + "| IVA: " + iva + "% | PVP: " + pvp;
 		}
 }
