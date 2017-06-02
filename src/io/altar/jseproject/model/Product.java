@@ -1,5 +1,7 @@
 package io.altar.jseproject.model;
 
+import io.altar.jseproject.textinterface.TextInterface;
+
 public class Product {
 
 		private int productId;
@@ -51,10 +53,11 @@ public class Product {
 			this.iva = iva;
 			this.pvp = pvp;
 			
+			TextInterface.productLists.put(this.productId,this);
 		}
 		
 		@Override
 		public String toString(){
-			return "Id" + productId + "| PVP " + pvp;
+			return "Id:" + productId + " | Nome: " + productName + " | Desconto: " + discount + "€ | IVA: " + iva + "% | PVP: " + pvp + "€";
 		}
 }
