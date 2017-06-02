@@ -58,6 +58,10 @@ public class Product {
 		
 		@Override
 		public String toString(){
+<<<<<<< HEAD
 			return "Id:" + productId + " | Nome: " + productName + " | Desconto: " + discount + "€ | IVA: " + iva + "% | PVP: " + pvp + "€";
+=======
+			return "Id:" + productId + "| Nome: " + productName + "| Desconto: " + discount + "| IVA: " + iva + "% | PVP: " + pvp;
+>>>>>>> f553f1135d5e2392016a9c4df714cf8f115960b3
 		}
 }
