@@ -10,16 +10,12 @@ public class TextInterface {
 	
 	static Scanner scanner = new Scanner(System.in);
 	public static Map <Integer, Product> productLists = new LinkedHashMap <Integer, Product>();
+	static int productId = 0;
 	
 	public static void firstScreen() {
 		
-<<<<<<< HEAD
-		System.out.println("Menu Screen 1\n");
-		System.out.println("Por favor selecione uma das seguintes op��es:");
-=======
-		System.out.println("Menu Screen 1");
-		System.out.println("Por favor selecione uma das seguintes op��es:");
->>>>>>> f553f1135d5e2392016a9c4df714cf8f115960b3
+		System.out.println("Menu Inicial Screen 1\n");
+		System.out.println("Por favor selecione uma das seguintes opções:");
 		System.out.println("1) Listar Produtos");
 		System.out.println("2) Listar Prateleiras");
 		System.out.println("3) Sair");
@@ -49,23 +45,13 @@ public class TextInterface {
 		
 		showProducts();
 		
-<<<<<<< HEAD
-		System.out.println("Menu Screen 2\n");
+		System.out.println("Menu Produtos Screen 2\n");
 		System.out.println("Por favor selecione uma das seguintes opções:");
-=======
-		System.out.println("Menu Screen 2");
-		System.out.println("Por favor selecione uma das seguintes op��es:");
->>>>>>> f553f1135d5e2392016a9c4df714cf8f115960b3
 		System.out.println("1) Criar novo produto");
 		System.out.println("2) Editar um produto existente");
 		System.out.println("3) Consultar o detalhe de um produto");
 		System.out.println("4) Remover um produto");
-		System.out.println("5) Voltar ao ecr� anterior");
-		
-		int userInput = checkUserInput(1, 5);
-		
-		int activeScreen = 2;
-		getUserOption(activeScreen, userInput);
+		System.out.println("5) Voltar ao ecrã anterior");
 		
 		int userInput = checkUserInput(1, 5);
 		
@@ -76,25 +62,15 @@ public class TextInterface {
 	
 	public static void thirdScreen() {
 		
-<<<<<<< HEAD
 		showProducts();
 		
-		System.out.println("Menu Screen 3\n");
+		System.out.println("Menu Prateleiras Screen 3\n");
 		System.out.println("Por favor selecione uma das seguintes opções:");
-=======
-		System.out.println("Menu Screen 3");
-		System.out.println("Por favor selecione uma das seguintes op��es:");
->>>>>>> f553f1135d5e2392016a9c4df714cf8f115960b3
-		System.out.println("1) Criar novo produto");
-		System.out.println("2) Editar um produto existente");
-		System.out.println("3) Consultar o detalhe de um produto");
-		System.out.println("4) Remover um produto");
-		System.out.println("5) Voltar ao ecr� anterior");
-		
-		int userInput = checkUserInput(1, 5);
-		
-		int activeScreen = 3;
-		getUserOption(activeScreen, userInput);
+		System.out.println("1) Criar nova prateleira");
+		System.out.println("2) Editar uma prateleira existente");
+		System.out.println("3) Consultar o detalhe de uma prateleira");
+		System.out.println("4) Remover uma prateleira");
+		System.out.println("5) Voltar ao ecrã anterior");
 		
 		int userInput = checkUserInput(1, 5);
 		
@@ -122,7 +98,7 @@ public class TextInterface {
 				}
 				} else {
 					
-					System.out.println("Por favor introduza um n�mero");
+					System.out.println("Por favor introduza um número");
 					scanner.next();
 				}
 		}
@@ -132,7 +108,6 @@ public class TextInterface {
 		
 		while(true) {
 			
-<<<<<<< HEAD
 			boolean teste = scanner.hasNextLine();
 			if (scanner.hasNextLine()) {
 				
@@ -141,41 +116,43 @@ public class TextInterface {
 				if (productName == null || productName.trim().isEmpty()) {
 					
 					System.out.println("Nome do produto não pode estar em branco");
-					System.out.println(teste);
-				} else {
-					System.out.println(teste);
-=======
-			String productName;
-			
-			if (scanner.hasNextLine()) {
-				
-				productName = scanner.nextLine();
-				
-				if (productName == null || productName.trim().isEmpty()) {
-					
-					System.out.println("Nome do produto n�o pode estar em branco");
-					
 				} else {
 					
->>>>>>> f553f1135d5e2392016a9c4df714cf8f115960b3
 					return productName;
 				}  
 			} else {
 				
-<<<<<<< HEAD
 				System.out.println("Nome do produto inválido");
 				System.out.println(teste);
-=======
-				System.out.println("Nome do produto inv�lido");
->>>>>>> f553f1135d5e2392016a9c4df714cf8f115960b3
+
 				scanner.next();
 			}
 		}
 	}
 	
-	public static void protectInputDiscount() {
+	public static double protectInputDiscount(double pvp) {
 		
+		double discount = 0;
 		
+		while(true) {
+			
+			if (scanner.hasNextDouble()) {
+				
+				discount = scanner.nextDouble();
+				
+				if(discount >= 0 && discount <= pvp ) {
+					
+					return discount;
+				} else {
+					
+					System.out.println("O desconto introduzido é inválido");
+				}
+			} else {
+				
+				System.out.println("O desconto introduzido não pode conter caracteres");
+				scanner.next();
+			}
+		}
 	}
 	
 	public static int protectInputIva() {
@@ -191,41 +168,95 @@ public class TextInterface {
 				switch (iva) {
 				
 					case 0:
-<<<<<<< HEAD
 					case 6:
 					case 13:
 					case 23:
 						return iva;
 					default:
 						System.out.println("O valor do iva introduzido não existe");
-=======
-						return iva;
-					case 6:
-						return iva;
-					case 13:
-						return iva;
-					case 23:
-						return iva;
-					default:
-						System.out.println("O valor do iva introduzido n�o existe");
->>>>>>> f553f1135d5e2392016a9c4df714cf8f115960b3
 						break;
 				}
 			} else {
 				
-<<<<<<< HEAD
+
 				System.out.println("O valor do iva introduzido é inválido");
-=======
-				System.out.println("O valor do iva introduzido � inv�lido");
->>>>>>> f553f1135d5e2392016a9c4df714cf8f115960b3
+
 				scanner.next();
 			}
 		}
 	}
 	
-	public static void protectInputPvp() {
+	public static double protectInputPvp() {
 		
+		double pvp = 0;
 		
+		while(true) {
+			
+			if(scanner.hasNextDouble()) {
+				
+				pvp = scanner.nextDouble();
+				
+				if(pvp < 0) {
+					
+					System.out.println("O PVP introduzido é inválido");
+				} else {
+					
+					
+					return pvp;
+				}
+			} else {
+				
+				System.out.println("O PVP não pode conter caracteres");
+				scanner.next();
+			}
+		}
+	}
+	
+	public static int protectProductId() {
+		
+		while(true) {
+			
+			int productId = 0;
+			int counter = 0;
+			int aux = 0;
+			
+			if (scanner.hasNextInt()) {
+				
+				productId = scanner.nextInt();
+				
+				if(productId <= 0) {
+					
+					System.out.println("O ID introduzido é inválido");
+					
+				} else {
+					
+					for (Integer key : productLists.keySet()) {
+					    System.out.println("Key = " + key);
+					    
+					    if(key == productId) {
+					    	
+					    	counter += 1;
+					    	aux = productId;
+					    } else {
+					    	
+					    	continue;
+					    }
+					}
+					
+					if(counter == 1) {
+						
+						return aux;
+					} else {
+						
+						System.out.println("O ID introduzido não existe");
+					}
+				}
+			} else {
+				
+				System.out.println("O ID introduzido é inválido");
+				scanner.next();
+			}
+		}		
 	}
 	
 	public static void getUserOption(int activeScreen, int option) {
@@ -241,7 +272,7 @@ public class TextInterface {
 					
 				case 2:
 					
-					System.out.println("Screen 2-2");
+					editProduct();
 					break;
 					
 				case 3:
@@ -293,30 +324,24 @@ public class TextInterface {
 	
 	public static void createNewProduct() {
 		
-<<<<<<< HEAD
-		int productId = 0;
 		String validation;
 		
 		do {
 			
-			//System.out.println("Menu criar novo produto: ");
+			System.out.println("Menu criar novo produto: ");
 			
+			scanner.nextLine();
 			System.out.println("Insira o nome do novo produto: ");
-			
-			//while(scanner.hasNext()) {
-			//   scanner.next();
-			//}
-			
 			String productName = protectInputStrings();
 			
-			System.out.println("Insira o desconto do novo produto:");
-			double discount = scanner.nextDouble();
+			System.out.println("Insira o PVP do novo produto:");
+			double pvp = protectInputPvp();
 			
 			System.out.println("Insira o IVA em percentagem do novo produto:");
 			int iva = protectInputIva();
 			
-			System.out.println("Insira o PVP do novo produto:");
-			double pvp = scanner.nextDouble();
+			System.out.println("Insira o desconto do novo produto:");
+			double discount = protectInputDiscount(pvp);
 			
 			productId += 1; 
 			
@@ -328,78 +353,62 @@ public class TextInterface {
 			validation = scanner.next();
 			
 		} while(validation.equalsIgnoreCase("s") );
-=======
-		System.out.println("Initial size of al: " + productLists.size());
-
-		Product p = new Product(productId, productName, discount, iva, pvp);
-		productLists.add(p);
-		
-		for ( int j = 0; j < productId; j++) {
-			
-			System.out.println("Nome: " + p.getProductName());
-			//System.out.println(Product);
-		}
-			
-		//productLists.forEach((Product)->System.out.println(Product));
-		
-		System.out.println("Size of al after additions: " + productLists.size());
-		
-		System.out.println("Contents of Product List: " + productLists);
->>>>>>> f553f1135d5e2392016a9c4df714cf8f115960b3
 		
 		secondScreen();
 	}
 	
-<<<<<<< HEAD
+
 	public static void showProducts() {
 		
 		boolean check = productLists.isEmpty();
 		if(check != true) {
 			
 			System.out.println("Lista de produtos no sistema:\n");
-=======
-	public static void createNewProduct() {
+			
+			//Map<String, List<String>> test1 = new LinkedHashMap<String, List<String>>();
+			productLists.forEach((key,value) -> {
+				
+				System.out.println(key + " -> " + value);
+			});
+			
+			System.out.println("\n");
+			
+		}
+	}
+	
+	public static void editProduct() {
 		
-		int productId = 0;
-		String validation;
+		System.out.println("Menu Editar Produtos: \n");
 		
-		do {
-			
-			System.out.println("Menu criar novo produto:");
-			
-			System.out.println("Insira o nome do novo produto:");
-			String productName = protectInputStrings();
-			
-			System.out.println("Insira o desconto do novo produto:");
-			double discount = scanner.nextDouble();
-			
-			System.out.println("Insira o IVA em percentagem do novo produto:");
-			int iva = protectInputIva();
-			
-			System.out.println("Insira o PVP do novo produto:");
-			double pvp = scanner.nextDouble();
-			
-			productId += 1; 
-			
-			Product newProduct = new Product(productId, productName, discount, iva, pvp);
-			saveValues(productId, productName, discount, iva, pvp);
-			
-			System.out.println("Quer continuar a inserir novo produto? (S/N)");
-			validation = scanner.next();
-			
-		} while(validation.equalsIgnoreCase("s") );
+		System.out.println("Introduza o ID do produto que pretende editar:");
+		int productId = protectProductId();
+		
+		System.out.println("Insira o novo nome do produto: [" + productLists.get(productId).getProductName() + "]");
+		scanner.nextLine();
+		String productName = protectInputStrings();
+		
+		System.out.println("Insira o novo PVP do produto: [" + productLists.get(productId).getPvp() + "]");
+		double pvp = protectInputPvp();
+		
+		System.out.println("Insira o novo IVA em percentagem do produto:[" + productLists.get(productId).getIva() + "]");;
+		int iva = protectInputIva();
+		
+		System.out.println("Insira o novo desconto do produto: [" + productLists.get(productId).getDiscount() + "]");
+		double discount = protectInputDiscount(pvp);
+		
+		Product newProduct = new Product(productId, productName, discount, iva, pvp);
 		
 		secondScreen();
 	}
 	
-	public static void showProducts() {
+	public static void viewProductDetail() {
 		
-		productLists.forEach((Product)->System.out.println(Product));
+		
 	}
-	
+			
 	public static void createNewShelf() {
 		
-		int productId = 0;
+		int shelfId = 0;
 		String validation;
 		
 		do {
@@ -409,19 +418,18 @@ public class TextInterface {
 			System.out.println("Insira o nome da nova prateleira:");
 			String productName = scanner.nextLine();
 			
-			System.out.println("Insira o desconto do novo produto:");
+			System.out.println("Insira o desconto da nova prateleira:");
 			double discount = scanner.nextDouble();
 			
-			System.out.println("Insira o IVA em percentagem do novo produto:");
+			System.out.println("Insira o IVA em percentagem da nova prateleira:");
 			int iva = scanner.nextInt();
 			
 			System.out.println("Insira o PVP do novo produto:");
 			double pvp = scanner.nextDouble();
 			
-			productId += 1; 
+			shelfId += 1; 
 			
-			Product newProduct = new Product(productId, productName, discount, iva, pvp);
-			saveValues(productId, productName, discount, iva, pvp);
+			Product newProduct = new Product(shelfId, productName, discount, iva, pvp);
 			
 			System.out.println("Quer continuar a inserir novo produto? (S/N)");
 			validation = scanner.next();
@@ -433,70 +441,28 @@ public class TextInterface {
 	
 }
 
-
-
-// Boolean endCheckUserInput = false;
-/* package org.altar.session1.test;
-
-import java.util.Scanner;
-
-public class test {
-
-	public static void main(String[] args) {
-		int input = getInput(1, 3);
-		switch (input) {
-		case 1:
-			break;
-		case 2:
-			break;
->>>>>>> f553f1135d5e2392016a9c4df714cf8f115960b3
-		}
- 
-		productLists.forEach((key,value) -> {
-		    System.out.println(key + " -> " + value);
-		});
-		
-		if(check != true) {
-			
-			System.out.println("\n");
-		}
-	}
+	/*if(scanner.hasNextInt()) {
 	
-	public static void createNewShelf() {
-		
-		int productId = 0;
-		String validation;
-		
-		do {
-			
-			System.out.println("Menu criar nova prateleira:");
-			
-			System.out.println("Insira o nome da nova prateleira:");
-			String productName = scanner.nextLine();
-			
-			System.out.println("Insira o desconto do novo produto:");
-			double discount = scanner.nextDouble();
-			
-			System.out.println("Insira o IVA em percentagem do novo produto:");
-			int iva = scanner.nextInt();
-			
-			System.out.println("Insira o PVP do novo produto:");
-			double pvp = scanner.nextDouble();
-			
-			productId += 1; 
-			
-			Product newProduct = new Product(productId, productName, discount, iva, pvp);
-			//saveValues(productId, productName, discount, iva, pvp);
-			
-			System.out.println("Quer continuar a inserir novo produto? (S/N)");
-			validation = scanner.next();
-			
-		} while(validation.equalsIgnoreCase("s") );
-		
-		thirdScreen();
-	}
+	productId = scanner.nextInt();
 	
+	if(productId <= 0) {
+		
+		System.out.println("O valor introduzido é inválido");
+	} else {
+		
+		for (Integer key : productLists.keySet()) {
+			
+		    System.out.println("Key = " + key);
+		    
+		    if (key == productId) {
+		
+		    	return productId;
+		    }   
+		}
+	} else {
+    	
+    	System.out.println("O id introduzido não existe");
+    	scanner.next();
+	}
 }
-
-
-
+}*/
