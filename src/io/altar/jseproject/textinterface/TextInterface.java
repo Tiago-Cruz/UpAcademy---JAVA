@@ -5,12 +5,13 @@ import java.util.Map;
 import java.util.Scanner;
 
 import io.altar.jseproject.model.Product;
+import io.altar.jseproject.repository.ProductRepository;
 
 public class TextInterface {
 	
-	static Scanner scanner = new Scanner(System.in);
-	public static Map <Integer, Product> productLists = new LinkedHashMap <Integer, Product>();
-	static int productId = 0;
+	public static Scanner scanner = new Scanner(System.in);
+	//public static Map <Integer, Product> productLists = new LinkedHashMap <Integer, Product>();
+	public static int productId = 0;
 	
 	public static void firstScreen() {
 		
@@ -230,7 +231,7 @@ public class TextInterface {
 					
 				} else {
 					
-					for (Integer key : productLists.keySet()) {
+					for (Integer key : ProductRepository.productLists.keySet()) {
 					    System.out.println("Key = " + key);
 					    
 					    if(key == productId) {
@@ -357,16 +358,15 @@ public class TextInterface {
 		secondScreen();
 	}
 	
-
 	public static void showProducts() {
 		
-		boolean check = productLists.isEmpty();
+		boolean check = ProductRepository.productLists.isEmpty();
 		if(check != true) {
 			
 			System.out.println("Lista de produtos no sistema:\n");
 			
 			//Map<String, List<String>> test1 = new LinkedHashMap<String, List<String>>();
-			productLists.forEach((key,value) -> {
+			ProductRepository.productLists.forEach((key,value) -> {
 				
 				System.out.println(key + " -> " + value);
 			});
@@ -383,17 +383,17 @@ public class TextInterface {
 		System.out.println("Introduza o ID do produto que pretende editar:");
 		int productId = protectProductId();
 		
-		System.out.println("Insira o novo nome do produto: [" + productLists.get(productId).getProductName() + "]");
+		System.out.println("Insira o novo nome do produto: [" + ProductRepository.productLists.get(productId).getProductName() + "]");
 		scanner.nextLine();
 		String productName = protectInputStrings();
 		
-		System.out.println("Insira o novo PVP do produto: [" + productLists.get(productId).getPvp() + "]");
+		System.out.println("Insira o novo PVP do produto: [" + ProductRepository.productLists.get(productId).getPvp() + "]");
 		double pvp = protectInputPvp();
 		
-		System.out.println("Insira o novo IVA em percentagem do produto:[" + productLists.get(productId).getIva() + "]");;
+		System.out.println("Insira o novo IVA em percentagem do produto:[" + ProductRepository.productLists.get(productId).getIva() + "]");;
 		int iva = protectInputIva();
 		
-		System.out.println("Insira o novo desconto do produto: [" + productLists.get(productId).getDiscount() + "]");
+		System.out.println("Insira o novo desconto do produto: [" + ProductRepository.productLists.get(productId).getDiscount() + "]");
 		double discount = protectInputDiscount(pvp);
 		
 		Product newProduct = new Product(productId, productName, discount, iva, pvp);
@@ -403,7 +403,20 @@ public class TextInterface {
 	
 	public static void viewProductDetail() {
 		
+		System.out.println("Menu Consultar Produtos: \n");
 		
+		System.out.println("Introduza o ID do produto que pretende consultar:");
+		int productId = protectProductId();
+		
+		
+	}
+	
+	public static void delecteProduct() {
+		
+		System.out.println("Menu Apagar Produtos: \n");
+		
+		System.out.println("Introduza o ID do produto que pretende apagar:");
+		int productId = protectProductId();
 	}
 			
 	public static void createNewShelf() {

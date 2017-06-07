@@ -1,6 +1,6 @@
 package io.altar.jseproject.model;
 
-import io.altar.jseproject.textinterface.TextInterface;
+import io.altar.jseproject.repository.ProductRepository;
 
 public class Product {
 
@@ -53,7 +53,7 @@ public class Product {
 			this.iva = iva;
 			this.pvp = pvp;
 			
-			TextInterface.productLists.put(this.productId,this);
+			ProductRepository.productLists.put(this.productId,this);
 		}
 		
 		@Override
