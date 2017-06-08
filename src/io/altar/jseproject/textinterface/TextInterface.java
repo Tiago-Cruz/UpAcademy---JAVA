@@ -1,7 +1,5 @@
 package io.altar.jseproject.textinterface;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 import io.altar.jseproject.model.Product;
@@ -278,12 +276,12 @@ public class TextInterface {
 					
 				case 3:
 					
-					System.out.println("Screen 2-3");
+					viewProductDetail();
 					break;
 					
 				case 4:
 					
-					System.out.println("Screen 2-4");
+					removeProduct();
 					break;
 					
 				case 5:
@@ -353,7 +351,7 @@ public class TextInterface {
 			System.out.println("Quer continuar a inserir novo produto? (S/N)");
 			validation = scanner.next();
 			
-		} while(validation.equalsIgnoreCase("s") );
+		} while(validation.equalsIgnoreCase("s"));
 		
 		secondScreen();
 	}
@@ -408,15 +406,54 @@ public class TextInterface {
 		System.out.println("Introduza o ID do produto que pretende consultar:");
 		int productId = protectProductId();
 		
+		System.out.println("Consulta produto: " + ProductRepository.productLists.get(productId));
 		
 	}
 	
-	public static void delecteProduct() {
+	public static void skipUserInput(){
+		System.out.println("Press enter to continue...");
+		
+		String test = "";
+		String enter = "";
+		int aux;
+		System.out.println("test");
+		test = scanner.nextLine();
+		int value = (int)test.charValue();
+		
+		System.out.println(aux);
+			/*if (scanner.hasNextLine()) {
+				
+				
+			} else {
+				
+				
+			}
+				
+		scanner.nextLine();*/
+	}
+	
+	public static void removeProduct() {
+		
+		String validation;
 		
 		System.out.println("Menu Apagar Produtos: \n");
 		
 		System.out.println("Introduza o ID do produto que pretende apagar:");
 		int productId = protectProductId();
+			
+		System.out.println("Deseja mesmo apagar o produto com o ID: " + ProductRepository.productLists.get(productId).getProductId() + " ? (S/N)");
+		validation = scanner.next();
+			
+		if (validation.equalsIgnoreCase("s")) {
+				
+			System.out.println("A remover o produto...");
+			ProductRepository.productLists.remove(productId);
+			System.out.println("Produto removido com sucesso!");
+				
+		} else if (validation.equalsIgnoreCase("n")) {
+			
+			secondScreen();
+		}
 	}
 			
 	public static void createNewShelf() {

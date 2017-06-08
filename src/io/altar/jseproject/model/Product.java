@@ -53,7 +53,7 @@ public class Product {
 			this.iva = iva;
 			this.pvp = pvp;
 			
-			ProductRepository.productLists.put(this.productId,this);
+			ProductRepository.INSTANCE.productLists.put(this.productId,this);
 		}
 		
 		@Override

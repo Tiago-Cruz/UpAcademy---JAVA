@@ -5,16 +5,16 @@ import java.util.Map;
 
 import io.altar.jseproject.model.Product;
 
-public final class ProductRepository {
-
-	/*public enum MySingleton {
-		
-		INSTANCE;  
-	}*/
+public enum ProductRepository { 
 	
+    INSTANCE;
+	
+	public static Map <Integer, Product> productLists = new LinkedHashMap <Integer, Product>();
+}
+	//productrepository.instance.map
 	
 		
-		private static final ProductRepository INSTANCE = new ProductRepository();
+		/*private static final ProductRepository INSTANCE = new ProductRepository();
 		private static final String Teste = "Ola Singleton";
 		public static final String Singleton = "Esse eu vejo fora";
 		private ProductRepository() {
@@ -29,9 +29,9 @@ public final class ProductRepository {
 			return INSTANCE; 
 		}
 		
-		public static Map <Integer, Product> productLists = new LinkedHashMap <Integer, Product>();
+		public static Map <Integer, Product> productLists = new LinkedHashMap <Integer, Product>();*/
 		
-}
+
 	
 	
 
