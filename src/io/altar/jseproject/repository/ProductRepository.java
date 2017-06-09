@@ -1,16 +1,36 @@
 package io.altar.jseproject.repository;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import io.altar.jseproject.model.Product;
 
-public enum ProductRepository { 
+public class ProductRepository extends EntityRepository<Product> {
 	
-    INSTANCE;
+	private static final ProductRepository INSTANCE = new ProductRepository();
+
+	private ProductRepository() {}
+
+	public static ProductRepository getInstance() {
+		return INSTANCE;
+	}
 	
-	public static Map <Integer, Product> productLists = new LinkedHashMap <Integer, Product>();
+	public static void () {
+		
+		((Product)ProductRepository.getInstance().get(Id)).setDiscount(discount);
+	}
 }
+	
+	
+public static void alterElement(Integer id, Integer[] shelf, Double discount, Integer tax, Double price) {
+	((Product)ProductRepository.getInstance().get(id)).setShelf_idLoc(shelf);
+	((Product)ProductRepository.getInstance().get(id)).setDiscount(discount);
+	((Product)ProductRepository.getInstance().get(id)).setIva(tax);
+	((Product)ProductRepository.getInstance().get(id)).setPrice(price);
+}
+//public enum ProductRepository { 
+	
+    //INSTANCE;
+	
+	//public static Map <Integer, Product> productLists = new LinkedHashMap <Integer, Product>();
+//}
 	//productrepository.instance.map
 	
 		

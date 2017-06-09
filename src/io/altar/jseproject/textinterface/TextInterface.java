@@ -379,7 +379,8 @@ public class TextInterface {
 		System.out.println("Menu Editar Produtos: \n");
 		
 		System.out.println("Introduza o ID do produto que pretende editar:");
-		int productId = protectProductId();
+		//int productId = protectProductId();
+		skipUserInput();
 		
 		System.out.println("Insira o novo nome do produto: [" + ProductRepository.productLists.get(productId).getProductName() + "]");
 		scanner.nextLine();
@@ -411,25 +412,23 @@ public class TextInterface {
 	}
 	
 	public static void skipUserInput(){
+		
 		System.out.println("Press enter to continue...");
 		
 		String test = "";
-		String enter = "";
-		int aux;
+		
+		
 		System.out.println("test");
 		test = scanner.nextLine();
-		int value = (int)test.charValue();
 		
-		System.out.println(aux);
-			/*if (scanner.hasNextLine()) {
-				
-				
-			} else {
-				
-				
-			}
-				
-		scanner.nextLine();*/
+		
+		if (test.equals("")){
+			
+			System.out.println("igual");
+		} else {
+			
+			int productId = protectProductId();
+		}
 	}
 	
 	public static void removeProduct() {

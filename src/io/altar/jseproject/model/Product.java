@@ -2,7 +2,7 @@ package io.altar.jseproject.model;
 
 import io.altar.jseproject.repository.ProductRepository;
 
-public class Product {
+public class Product extends Entity {
 
 		private int productId;
 		//public int shelfList[];
@@ -11,12 +11,12 @@ public class Product {
 		private int iva;
 		private double pvp;
 		
-		public int getProductId() {
+		/*public int getProductId() {
 			return productId;
 		}
 		public void setProductId(int productId) {
 			this.productId = productId;
-		}
+		}*/
 		public String getProductName() {
 			return productName;
 		}
@@ -42,18 +42,18 @@ public class Product {
 			this.pvp = pvp;
 		}
 		
-		public Product (int productId, String productName, double discount, int iva, double pvp) {
+		public Product (int Id, String productName, double discount, int iva, double pvp) {
 			
 		    //Se for escolhido o construtor sem a COR do veículo
 		    // definimos a cor padrão como sendo PRETA
 			
-			this.productId = productId;
-			this.productName = productName;
-			this.discount = discount;
-			this.iva = iva;
-			this.pvp = pvp;
+			productId = Id;
+			productName = productName;
+			discount = discount;
+			iva = iva;
+			pvp = pvp;
 			
-			ProductRepository.INSTANCE.productLists.put(this.productId,this);
+			ProductRepository.getInstance().productLists.put(this.productId,this);
 		}
 		
 		@Override

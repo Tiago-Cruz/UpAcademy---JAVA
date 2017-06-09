@@ -1,6 +1,6 @@
 package io.altar.jseproject.model;
 
-public class Shelf {
+public class Shelf extends Entity {
 	
 	private int shelfId;
 	private int locationCode;
