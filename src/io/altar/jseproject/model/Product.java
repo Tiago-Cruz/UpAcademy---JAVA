@@ -42,18 +42,18 @@ public class Product extends Entity {
 			this.pvp = pvp;
 		}
 		
-		public Product (int Id, String productName, double discount, int iva, double pvp) {
+		public Product (int id, String productName, double discount, int iva, double pvp) {
 			
 		    //Se for escolhido o construtor sem a COR do veículo
 		    // definimos a cor padrão como sendo PRETA
 			
-			productId = Id;
+			productId = id;
 			productName = productName;
 			discount = discount;
 			iva = iva;
 			pvp = pvp;
 			
-			ProductRepository.getInstance().productLists.put(this.productId,this);
+			ProductRepository.getInstance().addToList(this);
 		}
 		
 		@Override

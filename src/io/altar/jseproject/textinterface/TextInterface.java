@@ -1,14 +1,19 @@
 package io.altar.jseproject.textinterface;
 
+import java.util.Collection;
 import java.util.Scanner;
 
+import io.altar.jseproject.model.Entity;
 import io.altar.jseproject.model.Product;
 import io.altar.jseproject.repository.ProductRepository;
+import io.altar.jseproject.repository.EntityRepository;
 
 public class TextInterface {
 	
 	public static Scanner scanner = new Scanner(System.in);
 	//public static Map <Integer, Product> productLists = new LinkedHashMap <Integer, Product>();
+	private static ProductRepository productList = ProductRepository.getInstance();
+	//private static ShelfRepository shelfList = ShelfRepository.getInstance();
 	public static int productId = 0;
 	
 	public static void firstScreen() {
@@ -229,7 +234,7 @@ public class TextInterface {
 					
 				} else {
 					
-					for (Integer key : ProductRepository.productLists.keySet()) {
+					for (Integer key : productList.keySet()) {
 					    System.out.println("Key = " + key);
 					    
 					    if(key == productId) {
@@ -358,13 +363,15 @@ public class TextInterface {
 	
 	public static void showProducts() {
 		
-		boolean check = ProductRepository.productLists.isEmpty();
+		boolean check = productList.isEmpty();
 		if(check != true) {
 			
 			System.out.println("Lista de produtos no sistema:\n");
 			
+			Collection<Entity> allvalues = productList.getAll();
 			//Map<String, List<String>> test1 = new LinkedHashMap<String, List<String>>();
-			ProductRepository.productLists.forEach((key,value) -> {
+			productList.getAll().forEach();
+			productList.forEach((Collection<Entity> getAll() -> {
 				
 				System.out.println(key + " -> " + value);
 			});
@@ -382,17 +389,17 @@ public class TextInterface {
 		//int productId = protectProductId();
 		skipUserInput();
 		
-		System.out.println("Insira o novo nome do produto: [" + ProductRepository.productLists.get(productId).getProductName() + "]");
+		System.out.println("Insira o novo nome do produto: [" + productList.get(productId).getProductName() + "]");
 		scanner.nextLine();
 		String productName = protectInputStrings();
 		
-		System.out.println("Insira o novo PVP do produto: [" + ProductRepository.productLists.get(productId).getPvp() + "]");
+		System.out.println("Insira o novo PVP do produto: [" + productList.get(productId).getPvp() + "]");
 		double pvp = protectInputPvp();
 		
-		System.out.println("Insira o novo IVA em percentagem do produto:[" + ProductRepository.productLists.get(productId).getIva() + "]");;
+		System.out.println("Insira o novo IVA em percentagem do produto:[" + productList.get(productId).getIva() + "]");;
 		int iva = protectInputIva();
 		
-		System.out.println("Insira o novo desconto do produto: [" + ProductRepository.productLists.get(productId).getDiscount() + "]");
+		System.out.println("Insira o novo desconto do produto: [" + productList.get(productId).getDiscount() + "]");
 		double discount = protectInputDiscount(pvp);
 		
 		Product newProduct = new Product(productId, productName, discount, iva, pvp);
@@ -407,7 +414,7 @@ public class TextInterface {
 		System.out.println("Introduza o ID do produto que pretende consultar:");
 		int productId = protectProductId();
 		
-		System.out.println("Consulta produto: " + ProductRepository.productLists.get(productId));
+		System.out.println("Consulta produto: " + productList.get(productId));
 		
 	}
 	
@@ -440,13 +447,13 @@ public class TextInterface {
 		System.out.println("Introduza o ID do produto que pretende apagar:");
 		int productId = protectProductId();
 			
-		System.out.println("Deseja mesmo apagar o produto com o ID: " + ProductRepository.productLists.get(productId).getProductId() + " ? (S/N)");
+		System.out.println("Deseja mesmo apagar o produto com o ID: " + productList.get(productId).getProductId() + " ? (S/N)");
 		validation = scanner.next();
 			
 		if (validation.equalsIgnoreCase("s")) {
 				
 			System.out.println("A remover o produto...");
-			ProductRepository.productLists.remove(productId);
+			productList.remove(productId);
 			System.out.println("Produto removido com sucesso!");
 				
 		} else if (validation.equalsIgnoreCase("n")) {

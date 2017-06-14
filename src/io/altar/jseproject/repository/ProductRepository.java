@@ -1,6 +1,10 @@
 package io.altar.jseproject.repository;
 
+import java.util.Collection;
+
+import io.altar.jseproject.model.Entity;
 import io.altar.jseproject.model.Product;
+import io.altar.jseproject.repository.EntityRepository;
 
 public class ProductRepository extends EntityRepository<Product> {
 	
@@ -12,19 +16,30 @@ public class ProductRepository extends EntityRepository<Product> {
 		return INSTANCE;
 	}
 	
-	public static void () {
+	public static void alterElement(Integer id, String productName, Double discount, int iva, Double pvp) {
 		
-		((Product)ProductRepository.getInstance().get(Id)).setDiscount(discount);
+		((Product)ProductRepository.getInstance().get(id)).setDiscount(discount);
+		((Product)ProductRepository.getInstance().get(id)).setIva(iva);
+		((Product)ProductRepository.getInstance().get(id)).setPvp(pvp);
+	}
+
+	public void forEach(Collection<Entity> all) {
+		// TODO Auto-generated method stub
+		
 	}
 }
+
+
+ 
+
+//addToMyLinkedHashMap	
+	
+//public static void alterElement(Integer id, Integer[] shelf, Double discount, Integer tax, Double price) {
+	//((Product)ProductRepository.getInstance().get(id)).setShelf_idLoc(shelf);
 	
 	
-public static void alterElement(Integer id, Integer[] shelf, Double discount, Integer tax, Double price) {
-	((Product)ProductRepository.getInstance().get(id)).setShelf_idLoc(shelf);
-	((Product)ProductRepository.getInstance().get(id)).setDiscount(discount);
-	((Product)ProductRepository.getInstance().get(id)).setIva(tax);
-	((Product)ProductRepository.getInstance().get(id)).setPrice(price);
-}
+	
+
 //public enum ProductRepository { 
 	
     //INSTANCE;

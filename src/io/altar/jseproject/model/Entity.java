@@ -2,14 +2,13 @@ package io.altar.jseproject.model;
 
 public class Entity {
 	
-	private Integer Id;
+	private Integer id;
 
 	public Integer getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Integer id) {
-		Id = id;
+		this.id = id;
 	}
-
 }
