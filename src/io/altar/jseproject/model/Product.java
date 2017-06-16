@@ -48,10 +48,10 @@ public class Product extends Entity {
 		    // definimos a cor padrão como sendo PRETA
 			
 			productId = id;
-			productName = productName;
-			discount = discount;
-			iva = iva;
-			pvp = pvp;
+			this.productName = productName;
+			this.discount = discount;
+			this.iva = iva;
+			this.pvp = pvp;
 			
 			ProductRepository.getInstance().addToList(this);
 		}

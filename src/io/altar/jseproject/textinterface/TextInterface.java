@@ -1,6 +1,7 @@
 package io.altar.jseproject.textinterface;
 
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 import io.altar.jseproject.model.Entity;
@@ -12,7 +13,7 @@ public class TextInterface {
 	
 	public static Scanner scanner = new Scanner(System.in);
 	//public static Map <Integer, Product> productLists = new LinkedHashMap <Integer, Product>();
-	private static ProductRepository productList = ProductRepository.getInstance();
+	private static ProductRepository getInstanceProducts = ProductRepository.getInstance();
 	//private static ShelfRepository shelfList = ShelfRepository.getInstance();
 	public static int productId = 0;
 	
@@ -234,7 +235,7 @@ public class TextInterface {
 					
 				} else {
 					
-					for (Integer key : productList.keySet()) {
+					for (Integer key : getInstanceProducts.keySet()) {
 					    System.out.println("Key = " + key);
 					    
 					    if(key == productId) {
@@ -363,23 +364,33 @@ public class TextInterface {
 	
 	public static void showProducts() {
 		
-		boolean check = productList.isEmpty();
-		if(check != true) {
+		//boolean check = getInstanceProducts.isEmpty();
+		//if(check != true) {
 			
-			System.out.println("Lista de produtos no sistema:\n");
+			//System.out.println("Lista de produtos no sistema:\n");
 			
-			Collection<Entity> allvalues = productList.getAll();
-			//Map<String, List<String>> test1 = new LinkedHashMap<String, List<String>>();
-			productList.getAll().forEach();
-			productList.forEach((Collection<Entity> getAll() -> {
-				
-				System.out.println(key + " -> " + value);
-			});
+//			((Collection<Product>)getInstanceProducts.getAll()).forEach(); {
+//				
+//			    System.out.println(key + " -> " + value);
+//			});
+			//for(Product p : ((Collection<Product>)getInstanceProducts.getAll())){
+			    //System.out.println(p.getId());
+			//	
+			//}
 			
+			String text = "Lista de Produtos:\n";
+			if (!getInstanceProducts.isEmpty()) {
+				for (int ID : getInstanceProducts.keySet()) {
+					text += getInstanceProducts.get(ID).toString();
+				}
+			} else {
+				text += "Vazia!\n";
+			}
+			System.out.println(text);
 			System.out.println("\n");
 			
 		}
-	}
+	//}
 	
 	public static void editProduct() {
 		
@@ -389,17 +400,17 @@ public class TextInterface {
 		//int productId = protectProductId();
 		skipUserInput();
 		
-		System.out.println("Insira o novo nome do produto: [" + productList.get(productId).getProductName() + "]");
+		System.out.println("Insira o novo nome do produto: [" + ((Product) getInstanceProducts.get(productId)).getProductName() + "]");
 		scanner.nextLine();
 		String productName = protectInputStrings();
 		
-		System.out.println("Insira o novo PVP do produto: [" + productList.get(productId).getPvp() + "]");
+		System.out.println("Insira o novo PVP do produto: [" + ((Product) getInstanceProducts.get(productId)).getPvp() + "]");
 		double pvp = protectInputPvp();
 		
-		System.out.println("Insira o novo IVA em percentagem do produto:[" + productList.get(productId).getIva() + "]");;
+		System.out.println("Insira o novo IVA em percentagem do produto:[" + ((Product) getInstanceProducts.get(productId)).getIva() + "]");;
 		int iva = protectInputIva();
 		
-		System.out.println("Insira o novo desconto do produto: [" + productList.get(productId).getDiscount() + "]");
+		System.out.println("Insira o novo desconto do produto: [" + ((Product) getInstanceProducts.get(productId)).getDiscount() + "]");
 		double discount = protectInputDiscount(pvp);
 		
 		Product newProduct = new Product(productId, productName, discount, iva, pvp);
@@ -414,7 +425,7 @@ public class TextInterface {
 		System.out.println("Introduza o ID do produto que pretende consultar:");
 		int productId = protectProductId();
 		
-		System.out.println("Consulta produto: " + productList.get(productId));
+		System.out.println("Consulta produto: " + getInstanceProducts.get(productId));
 		
 	}
 	
@@ -447,13 +458,13 @@ public class TextInterface {
 		System.out.println("Introduza o ID do produto que pretende apagar:");
 		int productId = protectProductId();
 			
-		System.out.println("Deseja mesmo apagar o produto com o ID: " + productList.get(productId).getProductId() + " ? (S/N)");
+		System.out.println("Deseja mesmo apagar o produto com o ID: " + ((Product) getInstanceProducts.get(productId)) + " ? (S/N)");
 		validation = scanner.next();
 			
 		if (validation.equalsIgnoreCase("s")) {
 				
 			System.out.println("A remover o produto...");
-			productList.remove(productId);
+			getInstanceProducts.remove(productId);
 			System.out.println("Produto removido com sucesso!");
 				
 		} else if (validation.equalsIgnoreCase("n")) {

@@ -29,6 +29,11 @@ public class EntityRepository<E extends Entity> {
 		return entityList.get(id);
 	}
 	
+	public void remove(Integer id){
+		
+		entityList.remove(id);
+	}
+	
 	public boolean isEmpty() {
 		
 		return entityList.isEmpty();

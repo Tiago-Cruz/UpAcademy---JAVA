@@ -1,10 +1,7 @@
 package io.altar.jseproject.repository;
 
-import java.util.Collection;
-
-import io.altar.jseproject.model.Entity;
 import io.altar.jseproject.model.Product;
-import io.altar.jseproject.repository.EntityRepository;
+//import io.altar.jseproject.repository.EntityRepository;
 
 public class ProductRepository extends EntityRepository<Product> {
 	
@@ -21,11 +18,6 @@ public class ProductRepository extends EntityRepository<Product> {
 		((Product)ProductRepository.getInstance().get(id)).setDiscount(discount);
 		((Product)ProductRepository.getInstance().get(id)).setIva(iva);
 		((Product)ProductRepository.getInstance().get(id)).setPvp(pvp);
-	}
-
-	public void forEach(Collection<Entity> all) {
-		// TODO Auto-generated method stub
-		
 	}
 }
 
